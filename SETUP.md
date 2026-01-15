@@ -19,7 +19,7 @@ Docker is the easiest way to get started - everything runs in containers.
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/instakand.git
+git clone https://github.com/Shekhar0165/Instakand.git
 cd instakand
 ```
 

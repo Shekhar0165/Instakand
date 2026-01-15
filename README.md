@@ -52,7 +52,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/instakand.git
+git clone https://github.com/Shekhar0165/Instakand.git
 cd instakand
 
 # Copy environment file
@@ -236,4 +236,4 @@ If you find Instakand useful, please give it a ⭐ on GitHub!
 
 ---
 
-Made with ❤️ by [Shekhar Kashyap](https://github.com/yourusername)
+Made with ❤️ by [Shekhar Kashyap](https://github.com/Shekhar0165)
