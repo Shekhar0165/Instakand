@@ -1,0 +1,263 @@
+{
+    "info": {
+        "name": "Instakand API",
+        "description": "Instagram Scraper API Collection - Free Apify Alternative",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:3000",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "Profile",
+            "item": [
+                {
+                    "name": "Scrape Profile",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"natgeo\",\n  \"includePosts\": true,\n  \"postsLimit\": 12\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/scraper/profile",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "scraper",
+                                "profile"
+                            ]
+                        },
+                        "description": "Scrape an Instagram profile and optionally their posts"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Hashtag",
+            "item": [
+                {
+                    "name": "Scrape Hashtag",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"hashtag\": \"travel\",\n  \"limit\": 50,\n  \"page\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/scraper/hashtag",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "scraper",
+                                "hashtag"
+                            ]
+                        },
+                        "description": "Scrape posts from a hashtag with pagination support"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Post",
+            "item": [
+                {
+                    "name": "Scrape Single Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"postUrl\": \"https://www.instagram.com/p/ABC123/\",\n  \"includeComments\": true,\n  \"commentsLimit\": 20\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/scraper/post",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "scraper",
+                                "post"
+                            ]
+                        },
+                        "description": "Scrape a single Instagram post with optional comments"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Comments",
+            "item": [
+                {
+                    "name": "Scrape Comments",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"postUrl\": \"https://www.instagram.com/p/ABC123/\",\n  \"limit\": 50\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/scraper/comments",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "scraper",
+                                "comments"
+                            ]
+                        },
+                        "description": "Scrape comments from a specific post"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reels",
+            "item": [
+                {
+                    "name": "Scrape Reels",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"natgeo\",\n  \"limit\": 12,\n  \"includeDetails\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/scraper/reels",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "scraper",
+                                "reels"
+                            ]
+                        },
+                        "description": "Scrape reels from a user profile"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search",
+            "item": [
+                {
+                    "name": "Global Search",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"keyword\": \"travel\",\n  \"searchLimit\": 100,\n  \"resultLimit\": 50\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/scraper/search",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "scraper",
+                                "search"
+                            ]
+                        },
+                        "description": "Search posts and reels globally across Instagram by keyword"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Direct URLs",
+            "item": [
+                {
+                    "name": "Scrape Multiple URLs",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"urls\": [\n    \"https://www.instagram.com/natgeo/\",\n    \"https://www.instagram.com/p/ABC123/\",\n    \"https://www.instagram.com/reel/XYZ789/\"\n  ],\n  \"postsLimit\": 12,\n  \"includeComments\": false\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/scraper/direct-urls",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "scraper",
+                                "direct-urls"
+                            ]
+                        },
+                        "description": "Scrape multiple Instagram URLs at once (profiles, posts, reels)"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "System",
+            "item": [
+                {
+                    "name": "Get System Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/scraper/system-status",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "scraper",
+                                "system-status"
+                            ]
+                        },
+                        "description": "Get current system status including rate limiter, proxies, and browser status"
+                    }
+                }
+            ]
+        }
+    ]
+}

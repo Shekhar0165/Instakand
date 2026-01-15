@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Output data
+output
+
+# Sessions (contains auth cookies)
+sessions
+
+# Test files
+coverage
+test
+*.spec.ts
+
+# Documentation
+docs
+*.md
+!README.md

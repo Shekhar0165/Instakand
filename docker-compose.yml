@@ -1,0 +1,52 @@
+services:
+  # Instakand Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: instakand-app
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PROXY_LIST=${PROXY_LIST:-}
+      - MAX_CONCURRENT_BROWSERS=${MAX_CONCURRENT_BROWSERS:-3}
+      - REQUESTS_PER_PROXY=${REQUESTS_PER_PROXY:-50}
+      - MIN_DELAY_MS=${MIN_DELAY_MS:-3000}
+      - MAX_DELAY_MS=${MAX_DELAY_MS:-8000}
+      - RATE_LIMIT_REQUESTS_PER_MINUTE=${RATE_LIMIT_REQUESTS_PER_MINUTE:-7}
+      - RATE_LIMIT_REQUESTS_PER_HOUR=${RATE_LIMIT_REQUESTS_PER_HOUR:-300}
+      - INSTAGRAM_USERNAME=${INSTAGRAM_USERNAME:-}
+      - INSTAGRAM_PASSWORD=${INSTAGRAM_PASSWORD:-}
+    volumes:
+      - ./output:/app/output
+      - ./sessions:/app/sessions
+      - ./logs:/app/logs
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - instakand-network
+
+  # Redis for Bull Queue
+  redis:
+    image: redis:7-alpine
+    container_name: instakand-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    networks:
+      - instakand-network
+
+volumes:
+  redis_data:
+
+networks:
+  instakand-network:
+    driver: bridge
